@@ -1,0 +1,23 @@
+# Dependencies (Never commit these; they are reinstalled via package.json)
+node_modules/
+
+# Environment Variables (Contains sensitive API keys and secrets)
+.env
+.env.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Build and Production outputs
+dist/
+build/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# IDE / Code Editor configurations
+.vscode/
+.idea/
