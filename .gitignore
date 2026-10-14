@@ -1,5 +1,5 @@
 # Dependencies (Never commit these; they are reinstalled via package.json)
-node_modules/
+node_modules/    
 
 # Environment Variables (Contains sensitive API keys and secrets)
 .env
