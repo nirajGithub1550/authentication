@@ -1,10 +1,24 @@
+// src/routes/userRoutes.js
 import express from 'express';
-
-import { getAllUsers, getUserById, createUser,updateUser, deleteUser } from '../controllers/userController.js';
+import { signup, login } from '../controllers/authController.js';
+import {
+  getAllUsers,
+  getUserById,
+  updateUser,
+  deleteUser,
+} from '../controllers/userController.js';
+import { protect } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
-router.route('/').get(getAllUsers).post(createUser);
-router.route('/:id').get(getUserById).patch(updateUser).delete(deleteUser);
+// Public routes (Anyone can access)
+router.post('/signup', signup);
+router.post('/login', login);
+
+// Protected routes (Must pass a valid JWT token)
+router.get('/', protect, getAllUsers);
+router.get('/:id', protect, getUserById);
+router.patch('/:id', protect, updateUser);
+router.delete('/:id', protect, deleteUser);
 
 export default router;
